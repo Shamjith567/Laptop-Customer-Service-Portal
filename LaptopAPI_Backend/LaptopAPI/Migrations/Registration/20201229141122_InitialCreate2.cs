@@ -1,0 +1,33 @@
+﻿using Microsoft.EntityFrameworkCore.Migrations;
+
+namespace LaptopAPI.Migrations.Registration
+{
+    public partial class InitialCreate2 : Migration
+    {
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.CreateTable(
+                name: "Registrations",
+                columns: table => new
+                {
+                    RegistrationId = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    FirstName = table.Column<string>(type: "nVarchar(100)", nullable: true),
+                    LastName = table.Column<string>(type: "nVarchar(100)", nullable: true),
+                    Phone = table.Column<string>(type: "nVarchar(10)", nullable: true),
+                    Email = table.Column<string>(type: "nVarchar(100)", nullable: true),
+                    Password = table.Column<string>(type: "nVarchar(100)", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Registrations", x => x.RegistrationId);
+                });
+        }
+
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "Registrations");
+        }
+    }
+}
